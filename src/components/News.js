@@ -8,11 +8,12 @@ export class News extends Component {
     this.state = {
       articles : [],
       loading : false,
+      page : 1,
     }
   }
 
   async componentDidMount(){
-    let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=d44658a4b63c4009aa3e1f1b699ff048"
+    let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey="
     let response = await fetch(url);
     let parsedResponse = await response.json();
     this.setState({articles:parsedResponse.articles});
@@ -28,6 +29,10 @@ export class News extends Component {
           <NewsItem title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.url}/>
         </div>
         })}
+        </div>
+        <div className='container'>
+          <button className='btn'>&#8249;</button>
+          <button className='btn'>&#8250;</button>
         </div>
       </div>
     )
